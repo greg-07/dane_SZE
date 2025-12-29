@@ -1,0 +1,40 @@
+,DZIEŃ ROBOCZY,,,,,,,,,
+,okno dobowe,,,,,,,,,
+Lp.,odbiornik,rodzaj zużycia,ilość energii na godzinę zużycia ciągłego/godzinę oświetlenia/cykl (W/h),Zakres godzinowy cyklu ,ilość cykli w zakresie,Zakres godzinowy oświetlenia,Bilans dla okna wieczornego godz. 12:00,Bilans dla okna nocnego godz. 00:00, ilość energii do zasilania obwodów w czasie okna ładowania godz. 12:00,Uwagi
+1,Falownik – zużycie własne,ciągłe,50,N/A,N/A,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+2,oczyszczalnia,ciągłe,45,N/A,N/A,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+3,Lodówki,ciągłe,90,N/A,N/A,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+4,automatyka piwnica,ciągłe,15,N/A,N/A,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+5,airfryer,cykliczne,200,16:00-17:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+6,mikrofala,cykliczne,50,04:00-05:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+7,mikrofala,cykliczne,50,16:00-17:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+8,ekspres,cykliczne,60,04:00-05:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+9,ekspres,cykliczne,60,06:00-07:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+10,czajnik,cykliczne,80,05:00-06:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+11,czajnik,cykliczne,80,16:00-17:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+12,czajnik,cykliczne,80,19:00-20:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+13,zmywarka,cykliczne,1300,00:00-06:00,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+14,oświetlenie,oświetlenie,80,N/A,N/A,04:00-06:30,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+15,oświetlenie,oświetlenie,80,N/A,N/A,16:00 lub  początku okna wieczornego -22:30,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu, w zależności co nastąpi później
+16,grzałki CWU,cykliczne CWU,wyliczenie systemu,wyliczenie systemu,1,N/A,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+Bilans ogółem:,,,,,,,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+Zwiększenie bilansu:,,,,,,,0,0,0,
+Bilans ogółem + zwiększenie:,,,,,,,wyliczenie systemu,wyliczenie systemu,wyliczenie systemu,
+Straty: konwersja DC-AC,,,,"5,00%",,,,,,całkowity bilans ma być zwiększony o wartość E23
+Straty: ładowanie AC-DC,,,,"7,00%",,,,,,ilość energii AC przeznaczonej na ładowanie z AC – uzupełnienie deficytu bilansu -  ma być zwiększona o wartość E24
+,,,,,,,,,,
+"Komentarz: Kolumna A - wypełnia system, nadająć kolejne nr, kil. B - pole edytowalne, uzytkownik wpisuje nazwe własną, kol. C - lista rozwijana, do wyboru: ""ciągłe"", ""cykliczne"", ""oświetlenie"", ""cyklicze CWU"", kol. D, jeśli nie wybrano z listy rozwijanej (kol. C) ""cykliczne CWU"", pole edytowalne, uzytkownik wpisuje odp. wartość, jeśli wybrano z listy rozwijanej (kol. C) ""cykliczne CWU"" - pole nieedytowalne (wartość wylicza system), kol. E, w przypadku wybrania z list rozwijanej kol. C - ""cykliczne"", pole edytowalne, użytkownik wpisuje zakres godzinowy cyklu (pełne godz.), jeśli wybrano z listy rozwijanej (kol. C) ""cykliczne CWU"" - pole nieedytowalne (wartość wylicza system), przy pozostałych wyborach z listy rozwujanej kol. C, pole nieaktywne/niedostępne, kol. F - przy wyborze z listy rozwijanej kol. C ""cykliczne"" lub ""cykliczne CWU"" - pole edytowalne, wypełnia użytkownik, przy innych wyborach w kol. C pole nieaktywne/niedostępne, w kol. G - pole edytowalne, użytkownik wpisuje zakres godzinowy oświetlenia, w przypadku  jeśli wybrano z listy rozwijanej (kol. C) ""oświetlenie"",   przy pozostałych wyborach z listy rozwujanej kol. C, pole nieaktywne/niedostępne, użytkownik, oprócz wyboru zakresu godzinowego oświetlenia z dokładnością 0,5h, ma mieć możliwość wyboru godziny i godziny początku okna wieczornego, lub tylko godziny początku okna wieczornego,   w kol. H, I, J system wylicza ilość energii dla konkretnego zużycia dla poszczególnych okien i sumuje w wierszu 20. Pola H21, I21, J21 – użytkownik wpisuje w Wh wartośc o którą ma być zwiększony bilans, system , w przypadku deficytu energii na zwiększenie bilansu uzupełnia go  w sposób opisany w pliku: „Założenia SZE.docx” w projekcie SZE. E23 i E24 wpisuje użytkownik. Kol. K można umieścić na serwerze lub nie.",,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+"Analogicznie dla soboty, niedzieli/święta ustawowego zgodnie z danymi arkusza: ""Dane dla HTTP-bilans dobowy"" 
+dodatkowo:
+• w dniu roboczym powinien być przełącznik: ""Urlop: WŁ / WYŁ"", Gdy WŁ → użytkownik używa danych dnia roboczego, które edytuje wg potrzeb, okres: od-do (wybór w kalendarzu),  jeżeli okres urlopu się zakończy lub uzytkownik ustawi Urlop na WYŁ. powinny zostac załadowane dane z przed ustawienia urlopy na WŁ.
+• dla dnia roboczego, soboty, niedzieli/święta ustawowego powinien być przełącznik ""Wyjazd: WŁ / WYŁ"", okres: od-do (wybór w kalendarzu), gdy WŁ: CWU = OFF, Bilans = tylko zużycie ciągłe, Oświetlenie = 0h, jeżeli okres wyjazdu się zakończy lub uzytkownik ustawi wyjazd na WYŁ. system wraca do standardowych ustawień dla poszczególnych rodzajów dni.
+•Przełącznik: ""Ogrzewanie CWU z kotła WŁ / WYŁ"", jeśłi WŁ: CWU OFF.
+ ",,,,,,,,,,
