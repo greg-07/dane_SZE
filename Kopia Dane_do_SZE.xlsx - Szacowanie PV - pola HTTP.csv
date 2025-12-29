@@ -1,0 +1,32 @@
+Dane do oszacowania produkcji zPV,,
+,,
+Dane instalacji:,,
+rodzaj:,gruntowa,
+"współrzędne: 51.290050, 22.818633","51.290050, 22.818633",
+moc:,2430,Wp
+azymut:,180,st.
+kąt pochylenia:,45,st.
+,,
+,,
+Komentarz: pola B5-B8 edytowalne przez uzytkownika.,,
+Szacowanie – propozycja wstępna.,,
+"System o godz. 12:00:
+ 
+ oblicza teoretyczną irradiancję (bez chmur), dla każdej godziny od 12:00 do końca okna ładowania, wyznacza pozycję słońca (wysokość i azymut), oblicza, ile promieniowania pada na płasko pochyloną powierzchnię paneli (POA – Plane of Array), używając modelu clear-sky (np. Ineichen lub Haurwitz) – wynikiem jest maksymalna możliwa irradiancja w W/m² dla idealnego, bezchmurnego nieba.
+uwzględnia zachmurzenie z prognozy, dla każdej godziny pobiera procent zachmurzenia z OpenWeather (0–100%), redukuje teoretyczną irradiancję za pomocą prostego wzoru: rzeczywista irradiancja = teoretyczna × (1 – 0,75 × (zachmurzenie/100)²)m - współczynnik 0,75 dobrze oddaje nieliniowy wpływ chmur.
+szacuje energię z PV dla każdej godziny: mnoży rzeczywistą irradiancję przez moc instalacji, dzieli przez 1000, sumuje wszystkie godziny w przedziale,
+koryguje na podstawie porannej produkcji (kluczowe!), system zna rzeczywistą produkcję od wschodu do 12:00 (E_morning), oblicza, ile powinno być wyprodukowane w tym samym czasie przy prognozowanym zachmurzeniu, wyznacza współczynnik korekty: k = E_morning / E_teoretyczna_do_12:00, mnoży całą szacowaną energię popołudniową przez ten współczynnik, dopasowanie do realnych warunków dnia.
+zwraca realistyczną prognozę energii PV od 12:00 do 1,5 h przed zachodem, uwzględniając: geometrię paneli, pozycję słońca, zachmurzenie z prognozy, rzeczywiste zachowanie instalacji w danym dniu (dzięki korekcie porannej).
+w przypadku gdy z jakiegoś powodu brak jest danych z produkcji od wschodu do 12:00, nie dokonuje korekty.
+
+System o godz. 00:00:
+
+oblicza teoretyczną irradiancję (bez chmur), dla każdej godziny w oknie  ładowania , wyznacza pozycję słońca (wysokość i azymut), oblicza, ile promieniowania pada na płasko pochyloną powierzchnię paneli (POA – Plane of Array), używając modelu clear-sky (np. Ineichen lub Haurwitz) – wynikiem jest maksymalna możliwa irradiancja w W/m² dla idealnego, bezchmurnego nieba.
+uwzględnia zachmurzenie z prognozy, dla każdej godziny pobiera procent zachmurzenia z OpenWeather (0–100%), redukuje teoretyczną irradiancję za pomocą prostego wzoru: rzeczywista irradiancja = teoretyczna × (1 – 0,75 × (zachmurzenie/100)²)m - współczynnik 0,75 dobrze oddaje nieliniowy wpływ chmur.
+szacuje energię z PV dla każdej godziny: mnoży rzeczywistą irradiancję przez moc instalacji, dzieli przez 1000, sumuje wszystkie godziny w przedziale,
+jeśli prognoza produkcji energii w oknie ładowania jest w zakresie:
+od  4,00kWp do 5,00kWp dodatkowo doładowuje magazyn z sieci o 10%;
+od  3,00kWp do 4,00kWp dodatkowo doładowuje magazyn z sieci o 15%;
+od  2,00kWp do 3,00kWp dodatkowo doładowuje magazyn z sieci o 20%;
+od  0kWp do 2,00kWp dodatkowo doładowuje magazyn z sieci o 25%;
+powyższe, dodatkowe doładowanie magazynu z sieci jest realizowane niezależnie od ewentualnego doładowania w przypadku deficytu bilansu dla okna nocnego, doładowanie może być realizowane tylko w tańszej taryfie.",,

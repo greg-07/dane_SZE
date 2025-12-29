@@ -1,0 +1,11 @@
+Harmonogram CWU,,,,,uwagi
+,,,,,
+Temp. wody (ranek):,40,st. C,,,
+Temp. wody (wieczór): ,50,st. C,,,
+Temp. wody (dowolny czas): ,50,st. C,,,B5 możliwość wybrania dowolnej temp. lub brak
+,dzień roboczy,sobota,niedziela/ święto ustawowe,cała doba,
+`,04:30,07:00,08:00,,
+Godz. osiągnięcia zadanej temperatury (wieczór) ,19:30,19:00,19:00,,
+Godz. osiągnięcia zadanej temperatury (dowolny czas},,,,brak,E9 możliwość wybrania dowolnej godziny lub brak
+,,,,,
+"Komentarz: pola B3, B4, B5, B7, B8, C7, C8, D7, D8, E9 - edytowalne przez użytkownika",,,,,

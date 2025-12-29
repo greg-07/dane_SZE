@@ -1,0 +1,22 @@
+Pola informacyjne - strona główna HTTP,,
+,,
+Opis,Przykład,Uwagi
+Data,poniedziałek 21 grudnia 2025,
+Godzina,5:12:43 PM,
+Rodzaj dnia,roboczy/sobota/niedziela/święto ustawowe/urlop/wyjazd,
+Rodzaj okna dobowego,wieczorne/nocne/ładowania,
+Taryfa,tańsza/droższa,
+Aktualne zasilanie,PV/sieć/magazyn/PV i sieć/PV i magazyn,
+Ładowanie magazynu,PV/sieć/PV i sieć/nie,
+SoC (%),77,
+Aktualna pojemność magazynu -15% (kWh),"10,46",
+Aktualny bilans (kWh),"6,25","W godz. 12:00-00:00 dla okna wieczornego, wgodz. 00:00 do końca okna nocnego dla okna nocnego, w oknie ładowania N/A."
+Zabezpieczenie bilansu okna wieczornego (%),81,"poniżej 100% - kolor czerwony, równe lub powyżej zielony (dane od godz. 12:00, wcześniej N/A)"
+Zabezpieczenie bilansu okna nocnego (%),,"poniżej 100% - kolor czerwony, równe lub powyżej zielony (dane od godz. 00:00, wcześniej N/A)"
+inne - do ustalenia,,
+,,
+,,
+,,
+,,
+"Komentarz: pola do odczytu, pola B11 i B12 aktualizowane ciągle co minutę, pole B13 aktualizowane o 12:00 i o 00:00 oraz co minutę w trakcie trwania okna wieczornego i nocnego, pole B14 o 12:00 i co minutę w trakcie trwania okna wieczornego, pole B15 o 00:00 i co minutę w trakcie trwania okna nocnego. Na końcu ww. pół większe pole z pięcioma ostatnimi logami z Pythona o statusie: warning albo error.
+Przełącznik: ""Ogrzewanie CWU z kotła WŁ / WYŁ"" - na stronie głownej HTTP.",,

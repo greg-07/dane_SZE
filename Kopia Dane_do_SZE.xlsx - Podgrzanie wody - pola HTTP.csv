@@ -1,0 +1,20 @@
+Dane do podgrzania wody,,
+,,
+czas podgrzania 1l wody o 1 st. mocą 100W ,"41,86",s
+energia do podgrzania 1l wody o 1 st.  ,"1,16",Wh
+pojemność bojlera,120,l
+moc grzałki 1,500,W
+moc grzałki 2,1000,W
+moc grzałki 3,2000,W
+Łączna moc grzałek do podgrzania wody (ranek),2000,W
+Łączna moc grzałek do podgrzania wody (wieczór),1500,W
+Temperatura bojlera,,st. C
+Czas podgrzania bojlera do Temp. wody (ranek):,,h
+Czas podgrzania bojlera do Temp. wody (wieczór):,,h
+Ilość energii do  podgrzania bojlera do Temp. wody (ranek):,,Wh
+Ilość energii do  podgrzania bojlera do Temp. wody (wieczór):,,Wh
+Współczynnik wydłużenia czasu podgrzania (wychładzanie),10,%
+Współczynnik zwiększenia ilości energii (wychładzanie),10,%
+,,
+,,
+"Komentarz: pola B3-B10 oraz B16 i B17 edytowalne, pole B11 - odczyt termometru (Supla) co 30s, pola B12 - B15, wylicza system, z uwzględnieniem współczynników (B16, B17)",,
