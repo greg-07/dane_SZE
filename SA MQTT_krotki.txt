@@ -1,0 +1,310 @@
+
+ogólnie są 3 lokalizacje gdzie można pobrać dane:
+SZE/total/
+SZE/battery_1
+SZE/inverter_1
+
+polecenia na przełączenie/zmiane wartości były w skrypcie który modyfikowałeś na początku czatu.
+
+dokumentacja API SA: https://solar-assistant.io/help/integration/mqtt
+
+greg@debianhome:~$ mosquitto_sub -h 192.168.8.143 -t "SZE/total/#" -v
+
+-----------------------------------
+SZE/total/battery_power/state 136
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 107
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 107
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 122
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 122
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 122
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 107
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 129
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 129
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 107
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 107
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 122
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 129
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 129
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 107
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 107
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 129
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 114
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 114
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_energy_in/state 46.29
+SZE/total/battery_energy_out/state 12.48
+SZE/total/grid_energy_in/state 42.09
+SZE/total/grid_energy_out/state 0.0
+SZE/total/load_energy/state 40.29
+SZE/total/pv_energy/state 7.05
+SZE/total/battery_energy_in/state 46.29
+SZE/total/battery_energy_out/state 12.48
+SZE/total/grid_energy_in/state 42.09
+SZE/total/grid_energy_out/state 0.0
+SZE/total/load_energy/state 40.29
+SZE/total/pv_energy/state 7.05
+SZE/total/battery_power/state 114
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 129
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 129
+SZE/total/battery_state_of_charge/state 96
+SZE/total/battery_temperature/state 21.0
+SZE/total/battery_power/state 107
+
+
+----------------------------------------
+greg@debianhome:~$ mosquitto_sub -h 192.168.8.143 -t 'SZE/battery_1/#' -v
+
+-----------------------------------
+SZE/battery_1/capacity/state 314
+SZE/battery_1/capacity/state 314
+SZE/battery_1/cell_voltage_-_average/state 3.353
+SZE/battery_1/cell_voltage_-_highest/state 3.355
+SZE/battery_1/cell_voltage_-_lowest/state 3.352
+SZE/battery_1/current/state 2.8
+SZE/battery_1/cycles/state 3
+SZE/battery_1/power/state 150
+SZE/battery_1/state_of_charge/state 96.0
+SZE/battery_1/state_of_health/state 100.0
+SZE/battery_1/temperature/state 21.0
+SZE/battery_1/temperature_1/state 18.5
+SZE/battery_1/temperature_2/state 19.5
+SZE/battery_1/temperature_mos/state 21.0
+SZE/battery_1/voltage/state 53.7
+SZE/battery_1/capacity/state 314
+SZE/battery_1/cell_voltage_-_average/state 3.353
+SZE/battery_1/cell_voltage_-_highest/state 3.354
+SZE/battery_1/cell_voltage_-_lowest/state 3.353
+SZE/battery_1/current/state 2.4
+SZE/battery_1/cycles/state 3
+SZE/battery_1/power/state 129
+SZE/battery_1/state_of_charge/state 96.0
+SZE/battery_1/state_of_health/state 100.0
+SZE/battery_1/temperature/state 21.0
+SZE/battery_1/temperature_1/state 18.5
+SZE/battery_1/temperature_2/state 19.5
+SZE/battery_1/temperature_mos/state 21.0
+SZE/battery_1/voltage/state 53.7
+SZE/battery_1/capacity/state 314
+SZE/battery_1/cell_voltage_-_average/state 3.354
+SZE/battery_1/cell_voltage_-_highest/state 3.354
+SZE/battery_1/cell_voltage_-_lowest/state 3.353
+SZE/battery_1/current/state 2.7
+SZE/battery_1/cycles/state 3
+SZE/battery_1/power/state 143
+SZE/battery_1/state_of_charge/state 96.0
+SZE/battery_1/state_of_health/state 100.0
+SZE/battery_1/temperature/state 21.0
+SZE/battery_1/temperature_1/state 18.5
+SZE/battery_1/temperature_2/state 19.5
+SZE/battery_1/temperature_mos/state 21.0
+SZE/battery_1/voltage/state 53.7
+SZE/battery_1/capacity/state 314
+SZE/battery_1/cell_voltage_-_average/state 3.353
+SZE/battery_1/cell_voltage_-_highest/state 3.355
+SZE/battery_1/cell_voltage_-_lowest/state 3.352
+SZE/battery_1/current/state 2.7
+SZE/battery_1/cycles/state 3
+SZE/battery_1/power/state 143
+SZE/battery_1/state_of_charge/state 96.0
+SZE/battery_1/state_of_health/state 100.0
+SZE/battery_1/temperature/state 21.0
+SZE/battery_1/temperature_1/state 18.5
+SZE/battery_1/temperature_2/state 19.5
+SZE/battery_1/temperature_mos/state 21.0
+SZE/battery_1/voltage/state 53.7
+SZE/battery_1/capacity/state 314
+SZE/battery_1/cell_voltage_-_average/state 3.353
+SZE/battery_1/cell_voltage_-_highest/state 3.355
+SZE/battery_1/cell_voltage_-_lowest/state 3.353
+SZE/battery_1/current/state 2.4
+SZE/battery_1/cycles/state 3
+SZE/battery_1/power/state 129
+SZE/battery_1/state_of_charge/state 96.0
+SZE/battery_1/state_of_health/state 100.0
+SZE/battery_1/temperature/state 21.0
+SZE/battery_1/temperature_1/state 18.5
+SZE/battery_1/temperature_2/state 19.5
+SZE/battery_1/temperature_mos/state 21.0
+SZE/battery_1/voltage/state 53.7
+SZE/battery_1/capacity/state 314
+SZE/battery_1/cell_voltage_-_average/state 3.354
+SZE/battery_1/cell_voltage_-_highest/state 3.354
+SZE/battery_1/cell_voltage_-_lowest/state 3.353
+
+------------------------------------------
+greg@debianhome:~$ mosquitto_sub -h 192.168.8.143 -t 'SZE/inverter_1/#' -v
+
+----------------------------------
+SZE/inverter_1/serial_number/state 9523123456789B
+SZE/inverter_1/charger_source_priority/state Solar only
+SZE/inverter_1/max_charge_current/state 90.0
+SZE/inverter_1/battery_absorption_charge_voltage/state 55.2
+SZE/inverter_1/to_grid_battery_voltage/state 46.0
+SZE/inverter_1/battery_float_charge_voltage/state 54.4
+SZE/inverter_1/max_grid_charge_current/state 5.0
+SZE/inverter_1/output_source_priority/state Utility first
+SZE/inverter_1/shutdown_battery_voltage/state 43.0
+SZE/inverter_1/power_saving/state Disabled
+SZE/inverter_1/back_to_battery_voltage/state 48.0
+SZE/inverter_1/pv_voltage/state 153.1
+SZE/inverter_1/grid_frequency/state 50.01
+SZE/inverter_1/pv_power/state 14
+SZE/inverter_1/battery_voltage/state 54.1
+SZE/inverter_1/temperature/state 27.0
+SZE/inverter_1/load_percentage/state 31
+SZE/inverter_1/battery_current/state 2.8
+SZE/inverter_1/grid_power/state 2074
+SZE/inverter_1/device_mode/state Grid
+SZE/inverter_1/grid_voltage/state 230.2
+SZE/inverter_1/ac_output_frequency/state 50.01
+SZE/inverter_1/pv_current/state 0.0
+SZE/inverter_1/ac_output_voltage/state 230.7
+SZE/inverter_1/load_power/state 1966
+SZE/inverter_1/pv_voltage/state 153.1
+SZE/inverter_1/grid_frequency/state 50.01
+SZE/inverter_1/pv_power/state 14
+SZE/inverter_1/battery_voltage/state 54.1
+SZE/inverter_1/temperature/state 27.0
+SZE/inverter_1/load_percentage/state 31
+SZE/inverter_1/battery_current/state 2.8
+SZE/inverter_1/grid_power/state 2074
+SZE/inverter_1/device_mode/state Grid
+SZE/inverter_1/grid_voltage/state 230.2
+SZE/inverter_1/ac_output_frequency/state 50.01
+SZE/inverter_1/pv_current/state 0.0
+SZE/inverter_1/ac_output_voltage/state 230.7
+SZE/inverter_1/load_power/state 1966
+SZE/inverter_1/pv_voltage/state 153.1
+SZE/inverter_1/grid_frequency/state 50.01
+SZE/inverter_1/pv_power/state 14
+SZE/inverter_1/battery_voltage/state 54.1
+SZE/inverter_1/temperature/state 27.0
+SZE/inverter_1/load_percentage/state 31
+SZE/inverter_1/battery_current/state 2.8
+SZE/inverter_1/grid_power/state 2074
+SZE/inverter_1/device_mode/state Grid
+SZE/inverter_1/grid_voltage/state 230.2
+SZE/inverter_1/ac_output_frequency/state 50.01
+SZE/inverter_1/pv_current/state 0.0
+SZE/inverter_1/ac_output_voltage/state 230.7
+SZE/inverter_1/load_power/state 1966
+SZE/inverter_1/pv_voltage/state 156.3
+SZE/inverter_1/grid_frequency/state 50.01
+SZE/inverter_1/pv_power/state 14
+SZE/inverter_1/battery_voltage/state 54.1
+SZE/inverter_1/temperature/state 27.0
+SZE/inverter_1/load_percentage/state 31
+SZE/inverter_1/battery_current/state 2.8
+SZE/inverter_1/grid_power/state 2090
+SZE/inverter_1/device_mode/state Grid
+SZE/inverter_1/grid_voltage/state 230.3
+SZE/inverter_1/ac_output_frequency/state 50.04
+SZE/inverter_1/pv_current/state 0.0
+SZE/inverter_1/ac_output_voltage/state 230.7
+SZE/inverter_1/load_power/state 1972
+SZE/inverter_1/pv_voltage/state 156.3
+SZE/inverter_1/grid_frequency/state 50.01
+SZE/inverter_1/pv_power/state 14
+SZE/inverter_1/battery_voltage/state 54.1
+
+
+-----------------------------------
+ale jak wpisuję: greg@debianhome:~$ mosquitto_sub -h 192.168.8.143 -p 1883 -v -t '#'
+to między innymi wyświetla się to:
+
+homeassistant/sensor/sumry-sze_inverter_1_ac_output_frequency/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"AC output frequency","state_class":"measurement","state_topic":"SZE/inverter_1/ac_output_frequency/state","uniq_id":"sumry-sze_inverter_1_ac_output_frequency","unit_of_measurement":"Hz"}
+homeassistant/sensor/sumry-sze_inverter_1_ac_output_voltage/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"voltage","name":"AC output voltage","state_class":"measurement","state_topic":"SZE/inverter_1/ac_output_voltage/state","uniq_id":"sumry-sze_inverter_1_ac_output_voltage","unit_of_measurement":"V"}
+homeassistant/sensor/sumry-sze_inverter_1_battery_current/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"current","name":"Battery current","state_class":"measurement","state_topic":"SZE/inverter_1/battery_current/state","uniq_id":"sumry-sze_inverter_1_battery_current","unit_of_measurement":"A"}
+homeassistant/sensor/sumry-sze_inverter_1_battery_voltage/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"voltage","name":"Battery voltage","state_class":"measurement","state_topic":"SZE/inverter_1/battery_voltage/state","uniq_id":"sumry-sze_inverter_1_battery_voltage","unit_of_measurement":"V"}
+homeassistant/sensor/sumry-sze_inverter_1_device_mode/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Device mode","state_topic":"SZE/inverter_1/device_mode/state","uniq_id":"sumry-sze_inverter_1_device_mode"}
+homeassistant/sensor/sumry-sze_inverter_1_grid_frequency/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Grid frequency","state_class":"measurement","state_topic":"SZE/inverter_1/grid_frequency/state","uniq_id":"sumry-sze_inverter_1_grid_frequency","unit_of_measurement":"Hz"}
+homeassistant/sensor/sumry-sze_inverter_1_grid_power/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"power","name":"Grid power","state_class":"measurement","state_topic":"SZE/inverter_1/grid_power/state","uniq_id":"sumry-sze_inverter_1_grid_power","unit_of_measurement":"W"}
+homeassistant/sensor/sumry-sze_inverter_1_grid_voltage/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"voltage","name":"Grid voltage","state_class":"measurement","state_topic":"SZE/inverter_1/grid_voltage/state","uniq_id":"sumry-sze_inverter_1_grid_voltage","unit_of_measurement":"V"}
+homeassistant/sensor/sumry-sze_inverter_1_load_percentage/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Load percentage","state_class":"measurement","state_topic":"SZE/inverter_1/load_percentage/state","uniq_id":"sumry-sze_inverter_1_load_percentage","unit_of_measurement":"%"}
+homeassistant/sensor/sumry-sze_inverter_1_load_power/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"power","name":"Load power","state_class":"measurement","state_topic":"SZE/inverter_1/load_power/state","uniq_id":"sumry-sze_inverter_1_load_power","unit_of_measurement":"W"}
+homeassistant/sensor/sumry-sze_inverter_1_pv_current/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"current","name":"PV current","state_class":"measurement","state_topic":"SZE/inverter_1/pv_current/state","uniq_id":"sumry-sze_inverter_1_pv_current","unit_of_measurement":"A"}
+homeassistant/sensor/sumry-sze_inverter_1_pv_power/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"power","name":"PV power","state_class":"measurement","state_topic":"SZE/inverter_1/pv_power/state","uniq_id":"sumry-sze_inverter_1_pv_power","unit_of_measurement":"W"}
+homeassistant/sensor/sumry-sze_inverter_1_pv_voltage/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"voltage","name":"PV voltage","state_class":"measurement","state_topic":"SZE/inverter_1/pv_voltage/state","uniq_id":"sumry-sze_inverter_1_pv_voltage","unit_of_measurement":"V"}
+homeassistant/sensor/sumry-sze_inverter_1_temperature/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"temperature","name":"Temperature","state_class":"measurement","state_topic":"SZE/inverter_1/temperature/state","uniq_id":"sumry-sze_inverter_1_temperature","unit_of_measurement":"°C"}
+homeassistant/sensor/sumry-sze_total_battery_power/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"power","name":"Battery power","state_class":"measurement","state_topic":"SZE/total/battery_power/state","uniq_id":"sumry-sze_total_battery_power","unit_of_measurement":"W"}
+homeassistant/sensor/sumry-sze_total_battery_state_of_charge/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"battery","name":"Battery state of charge","state_class":"measurement","state_topic":"SZE/total/battery_state_of_charge/state","uniq_id":"sumry-sze_total_battery_state_of_charge","unit_of_measurement":"%"}
+homeassistant/sensor/sumry-sze_total_battery_temperature/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"temperature","name":"Battery temperature","state_class":"measurement","state_topic":"SZE/total/battery_temperature/state","uniq_id":"sumry-sze_total_battery_temperature","unit_of_measurement":"°C"}
+homeassistant/sensor/sumry-sze_inverter_1_serial_number/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Serial number","state_topic":"SZE/inverter_1/serial_number/state","uniq_id":"sumry-sze_inverter_1_serial_number"}
+homeassistant/sensor/sumry-sze_battery_1_capacity/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Capacity","state_topic":"SZE/battery_1/capacity/state","uniq_id":"sumry-sze_battery_1_capacity","unit_of_measurement":"Ah"}
+homeassistant/sensor/sumry-sze_battery_1_cell_voltage_-_average/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"voltage","name":"Cell voltage - Average","state_class":"measurement","state_topic":"SZE/battery_1/cell_voltage_-_average/state","uniq_id":"sumry-sze_battery_1_cell_voltage_-_average","unit_of_measurement":"V"}
+homeassistant/sensor/sumry-sze_battery_1_cell_voltage_-_highest/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"voltage","name":"Cell voltage - Highest","state_class":"measurement","state_topic":"SZE/battery_1/cell_voltage_-_highest/state","uniq_id":"sumry-sze_battery_1_cell_voltage_-_highest","unit_of_measurement":"V"}
+homeassistant/sensor/sumry-sze_battery_1_cell_voltage_-_lowest/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"voltage","name":"Cell voltage - Lowest","state_class":"measurement","state_topic":"SZE/battery_1/cell_voltage_-_lowest/state","uniq_id":"sumry-sze_battery_1_cell_voltage_-_lowest","unit_of_measurement":"V"}
+homeassistant/sensor/sumry-sze_battery_1_current/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"current","name":"Current","state_class":"measurement","state_topic":"SZE/battery_1/current/state","uniq_id":"sumry-sze_battery_1_current","unit_of_measurement":"A"}
+homeassistant/sensor/sumry-sze_battery_1_cycles/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Cycles","state_topic":"SZE/battery_1/cycles/state","uniq_id":"sumry-sze_battery_1_cycles"}
+homeassistant/sensor/sumry-sze_battery_1_power/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"power","name":"Power","state_class":"measurement","state_topic":"SZE/battery_1/power/state","uniq_id":"sumry-sze_battery_1_power","unit_of_measurement":"W"}
+homeassistant/sensor/sumry-sze_battery_1_state_of_charge/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"battery","name":"State of charge","state_class":"measurement","state_topic":"SZE/battery_1/state_of_charge/state","uniq_id":"sumry-sze_battery_1_state_of_charge","unit_of_measurement":"%"}
+homeassistant/sensor/sumry-sze_battery_1_state_of_health/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"State of health","state_class":"measurement","state_topic":"SZE/battery_1/state_of_health/state","uniq_id":"sumry-sze_battery_1_state_of_health","unit_of_measurement":"%"}
+homeassistant/sensor/sumry-sze_battery_1_temperature/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"temperature","name":"Temperature","state_class":"measurement","state_topic":"SZE/battery_1/temperature/state","uniq_id":"sumry-sze_battery_1_temperature","unit_of_measurement":"°C"}
+homeassistant/sensor/sumry-sze_battery_1_temperature_1/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"temperature","name":"Temperature 1","state_class":"measurement","state_topic":"SZE/battery_1/temperature_1/state","uniq_id":"sumry-sze_battery_1_temperature_1","unit_of_measurement":"°C"}
+homeassistant/sensor/sumry-sze_battery_1_temperature_2/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"temperature","name":"Temperature 2","state_class":"measurement","state_topic":"SZE/battery_1/temperature_2/state","uniq_id":"sumry-sze_battery_1_temperature_2","unit_of_measurement":"°C"}
+homeassistant/sensor/sumry-sze_battery_1_temperature_mos/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"temperature","name":"Temperature MOS","state_class":"measurement","state_topic":"SZE/battery_1/temperature_mos/state","uniq_id":"sumry-sze_battery_1_temperature_mos","unit_of_measurement":"°C"}
+homeassistant/sensor/sumry-sze_battery_1_voltage/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"voltage","name":"Voltage","state_class":"measurement","state_topic":"SZE/battery_1/voltage/state","uniq_id":"sumry-sze_battery_1_voltage","unit_of_measurement":"V"}
+homeassistant/sensor/SZE_set_response_message/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Response","state_topic":"SZE/set/response_message/state","uniq_id":"SZE_set"}
+homeassistant/sensor/sumry-sze_total_battery_energy_in/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"energy","name":"Battery energy in","state_class":"total_increasing","state_topic":"SZE/total/battery_energy_in/state","uniq_id":"sumry-sze_total_battery_energy_in","unit_of_measurement":"kWh"}
+homeassistant/sensor/sumry-sze_total_battery_energy_out/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"energy","name":"Battery energy out","state_class":"total_increasing","state_topic":"SZE/total/battery_energy_out/state","uniq_id":"sumry-sze_total_battery_energy_out","unit_of_measurement":"kWh"}
+homeassistant/sensor/sumry-sze_total_grid_energy_in/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"energy","name":"Grid energy in","state_class":"total_increasing","state_topic":"SZE/total/grid_energy_in/state","uniq_id":"sumry-sze_total_grid_energy_in","unit_of_measurement":"kWh"}
+homeassistant/sensor/sumry-sze_total_grid_energy_out/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"energy","name":"Grid energy out","state_class":"total_increasing","state_topic":"SZE/total/grid_energy_out/state","uniq_id":"sumry-sze_total_grid_energy_out","unit_of_measurement":"kWh"}
+homeassistant/sensor/sumry-sze_total_load_energy/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"energy","name":"Load energy","state_class":"total_increasing","state_topic":"SZE/total/load_energy/state","uniq_id":"sumry-sze_total_load_energy","unit_of_measurement":"kWh"}
+homeassistant/sensor/sumry-sze_total_pv_energy/config {"device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"device_class":"energy","name":"PV energy","state_class":"total_increasing","state_topic":"SZE/total/pv_energy/state","uniq_id":"sumry-sze_total_pv_energy","unit_of_measurement":"kWh"}
+homeassistant/select/sumry-sze_inverter_1_charger_source_priority/config {"command_topic":"SZE/inverter_1/charger_source_priority/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Charger source priority","options":["Utility first","Solar first","Solar and utility simultaneously","Solar only"],"state_topic":"SZE/inverter_1/charger_source_priority/state","uniq_id":"sumry-sze_inverter_1_charger_source_priority"}
+homeassistant/select/sumry-sze_inverter_1_output_source_priority/config {"command_topic":"SZE/inverter_1/output_source_priority/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Output source priority","options":["Utility first","Solar first","Solar/Battery/Utility","Solar/Utility/Battery"],"state_topic":"SZE/inverter_1/output_source_priority/state","uniq_id":"sumry-sze_inverter_1_output_source_priority"}
+homeassistant/select/sumry-sze_inverter_1_power_saving/config {"command_topic":"SZE/inverter_1/power_saving/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"name":"Power saving","options":["Disabled","Enabled"],"state_topic":"SZE/inverter_1/power_saving/state","uniq_id":"sumry-sze_inverter_1_power_saving"}
+homeassistant/number/sumry-sze_inverter_1_max_charge_current/config {"command_topic":"SZE/inverter_1/max_charge_current/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"max":200,"min":0,"name":"Max charge current","state_topic":"SZE/inverter_1/max_charge_current/state","uniq_id":"sumry-sze_inverter_1_max_charge_current","unit_of_measurement":"A"}
+homeassistant/number/sumry-sze_inverter_1_battery_absorption_charge_voltage/config {"command_topic":"SZE/inverter_1/battery_absorption_charge_voltage/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"max":120,"min":0,"name":"Battery absorption charge voltage","state_topic":"SZE/inverter_1/battery_absorption_charge_voltage/state","uniq_id":"sumry-sze_inverter_1_battery_absorption_charge_voltage","unit_of_measurement":"V"}
+homeassistant/number/sumry-sze_inverter_1_to_grid_battery_voltage/config {"command_topic":"SZE/inverter_1/to_grid_battery_voltage/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"max":120,"min":0,"name":"To grid battery voltage","state_topic":"SZE/inverter_1/to_grid_battery_voltage/state","uniq_id":"sumry-sze_inverter_1_to_grid_battery_voltage","unit_of_measurement":"V"}
+homeassistant/number/sumry-sze_inverter_1_battery_float_charge_voltage/config {"command_topic":"SZE/inverter_1/battery_float_charge_voltage/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"max":120,"min":0,"name":"Battery float charge voltage","state_topic":"SZE/inverter_1/battery_float_charge_voltage/state","uniq_id":"sumry-sze_inverter_1_battery_float_charge_voltage","unit_of_measurement":"V"}
+homeassistant/number/sumry-sze_inverter_1_max_grid_charge_current/config {"command_topic":"SZE/inverter_1/max_grid_charge_current/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"max":200,"min":0,"name":"Max grid charge current","state_topic":"SZE/inverter_1/max_grid_charge_current/state","uniq_id":"sumry-sze_inverter_1_max_grid_charge_current","unit_of_measurement":"A"}
+homeassistant/number/sumry-sze_inverter_1_shutdown_battery_voltage/config {"command_topic":"SZE/inverter_1/shutdown_battery_voltage/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"max":120,"min":0,"name":"Shutdown battery voltage","state_topic":"SZE/inverter_1/shutdown_battery_voltage/state","uniq_id":"sumry-sze_inverter_1_shutdown_battery_voltage","unit_of_measurement":"V"}
+homeassistant/number/sumry-sze_inverter_1_back_to_battery_voltage/config {"command_topic":"SZE/inverter_1/back_to_battery_voltage/set","device":{"ids":["sumry-sze"],"mdl":"Sumry Off-Grid","mf":"Sumry","name":"Sumry Off-Grid"},"max":120,"min":0,"name":"Back to battery voltage","state_topic":"SZE/inverter_1/back_to_battery_voltage/state","uniq_id":"sumry-sze_inverter_1_back_to_battery_voltage","unit_of_measurement":"V"}
+
+co to jest, do czego słuzy, czy to mozna jakiś wykorzystać, czy sie przyda???
+
+
+----------------------------------
+

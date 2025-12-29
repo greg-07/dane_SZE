@@ -1,0 +1,51 @@
+System Zarządzania Energią 
+    I.  Definicje:
+    1) System Zarządzania Energią (SZE, system) – serwer http oraz skrypt w Python zarządzający wykorzystaniem energii elektrycznej, pochodzącej z systemu offgrid, z wykorzystaniem API Solar Assistant (SA) skomunikowanego z falownikiem i magazynem energii oraz API oprogramowania SUPLA odczytujący dane z kanałów pomiarowych oraz sterujący przekaźnikami.
+    2) Harmonogram cwu – dane dla systemu określające wartość temperatury wody cwu oraz godzinę, w jakiej ta temperatura ma być osiągnięta.  
+    3) Dzień roboczy – każdy dzień od poniedziałku do piątku nie będący dniem ustawowo wolnym od pracy.
+    4) Okno dobowe:
+        a) okres od 1,5h po wschodzie słońca do 1,5h przed zachodem słońca – okno ładowania;
+        b) okres od 1,5h przed zachodem słońca – godz. 00:00 - okno wieczorne;
+        c) okres od godz. 00:00 do 1,5h po wschodzie słońca – okno nocne.
+    5) Bilans energetyczny (bilans) - to ilość energii do zasilania odbiorników w oknach dobowych: wieczornym lub nocnym w rozbiciu na:
+        a) podgrzanie cwu (ilość energii potrzebna do podgrzania cwu dla danego harmonogramu cwu, wyliczana przez SZE na podstawie pobieranych danych).
+        b) zasilanie obwodów domowych:
+            ▪ ilość energii potrzebna do zasilania odbiorników załączanych cyklicznie – oszacowana wartość stała energii na cykl w danym oknie dobowym - wpisywana ręcznie ,
+            ▪ ilość energii potrzebna do zasilania odbiorników załączonych ciągle – oszacowana wartość stała energii na godzinę w danym oknie dobowym - wpisywana ręcznie,
+            ▪ ilość energii potrzebna do zasilania oświetlenia załączonego ciągle przez określoną liczbę godzin  - oszacowana wartość stała energii na godzinę w danym oknie dobowym  – wpisywana ręcznie,
+    6) Tańsza taryfa - godziny w ciągu dnia gdzie energia wg taryfy G12W jest tańsza:
+        a) Dzień roboczy: 22:00 – 06:00 dnia następnego oraz od 1 października do 31 marca od 13:00 do 15:00 oraz od 1 kwietnia do 30 września od 15:00 do 17:00
+        b) Sobota – cała doba;
+        c) Niedziela/święto ustawowe – cała doba 
+    7) Droższa taryfa - godziny w ciągu dnia gdzie energia wg taryfy G12W jest droższa – są to godziny poza ww. 
+    8) Coś brakuje – proszę o info.
+
+    II. Pola edycji/wyświetlania na serwerze HTTP (np. via Flask lub FastAPI)
+Plik w projekcie SZE: Dane do SZE.xlsx
+    III. Założenia ogólne.
+System co X minut sprawdza sytuację i działa w zależności od rodzaju dnia, wybierając właściwy harmonogram cwu i bilans, ma dostęp do danych, edytowalnych przez użytkownika za pomocą WWW.  Dokonuje też odczytu i analizy danych z API: SA, Supla, openweathermap i niezbędnych  bibliotek, dokonuje wyliczeń i steruje falownikiem i przekaźnikami, wysyła powiadomienia Pushover, wyświetla log, itp.
+    IV. Założenia nadrzędne:
+    1. Najbardziej pożądana sytuacją jest zasilanie odbiorów z PV lub z magazynu, ale z uwagi na zmienność pogody i to, że dla szerokości geograficznej środkowo-wschodniej Europy w miesiącach jesienno zimowych czas oświetlenia słonecznego w ciągu doby jest krótki, system musi wspomagać się energią z sieci, najlepiej w tańszej taryfie.
+    2. System zawsze przełącza się z SBU na Grid gdy stan naładowania magazynu jest =< 10%,, dodatkowo załącza ładowanie magazynu z grid do 15%.
+    3. System zawsze, ale tylko podczas tańszej taryfy,  przełącza się z SBU na Grid gdy stan naładowania magazynu jest =< 15%,, dodatkowo załącza ładowanie magazynu z grid do 20%.
+    4. Przy zaniku zasilania z Grid system może rozładować magazyn do max 5%.
+
+    V. Działanie systemu.
+Po starcie, w zależności od rodzaju dnia, system wybiera właściwy harmonogram cwu i bilans dla okien dobowych, dokonuje odczytu i analizy danych, wyliczeń oraz loguje, dąży do ładowania magazynu tylko z PV i zasilania odbiorów z PV i/lub magazynu, przyjęto, że zasilanie odbiorników w czasie okna ładowania, pochodzić będzie z PV i/lub z magazynu. Przypadki przełączenia na zasilanie z sieci oraz zasilanie i ładowania magazynu z sieci określono w dalszej części.
+Okno wieczorne;
+    1. O godz 12:00, po obliczeniu bilansu dla okna wieczornego, system oblicza prognozę produkcji energii z PV od 12:00 do końca okna ładowania (Plik w projekcie SZE: Dane do SZE.xlsx), prognoza z PV-zużycie do końca okna ładowania=energia, która doładuje magazyn lub jeśli wynik ujemny - rozładuje, od  sumy energii z prognozy z PV, z uwzględnieniem zużycia w oknie ładowania oraz energii aktualnie zgromadzonej w magazynie system odejmuje wartość bilansu. Najbardziej pożądaną jest wartość dodatnia czyli nadwyżka energii w magazynie w stosunku do bilansu, jeśli jednak wynikiem jest deficyt, brakująca energia magazynu musi zostać uzupełniona, zaoszczędzona, albo oba te działania muszą być wykonane łącznie. W tym celu, po wyliczeniu  brakującej różnicy, falownik, w czasie tańszej taryfy w ciągu dnia (2h) przełącza się na zasilanie i ładowanie z Grid (ustawia maksymalny bezpieczny prąd ładowania z sieci*), a następnie co 2 minuty odczytuje aktualną moc pobieraną z sieci (grid_power). Jeśli moc jest większa od 0 W, dodaje do sumy delta = (moc [W] × 2/60) / 1000 kWh. Gdy skumulowana suma delta osiągnie wyliczoną różnicę (deficyt), system wyłącza ładowanie z sieci (max_grid_charge_current = 0) i przechodzi z powrotem do zasilania z magazynu. Jeżeli w ciągu 2h tańszej taryfy mimo załączenia zasilania i ładowania z sieci system nie zdąży  uzupełnić brakującej różnicy, wyłącza ładowanie z sieci i przechodzi na zasilanie z magazynu. Następnie o godz. 22:00 (początek tańszej taryfy w nocy, wylicza bilans dla zakresu 22:00-00:00 (24:00) i jeśli jest deficyt działa analogicznie jak w czasie tańszej taryfy w ciągu dnia.
+Komentarz: Metoda oparta na aktualnej mocy (grid_power) pozwala precyzyjnie liczyć rzeczywiste pobranie z sieci w tańszej taryfie, niezależnie od jednoczesnej pracy PV (PV nie wpływa na grid_power). Eliminuje problem braku rozdzielności energii z sieci na odbiory i ładowanie magazynu w SA.
+*)  maksymalny bezpieczny prąd ładowania z sieci :
+                    ◦ w czasie ładowania magazynu z PV i jednocześnie z sieci – 30A
+                    ◦ w czasie ładowania magazynu z tylko z sieci np. (noc)  – 40A
+Okno nocne;
+    2. O godz 00:00, po obliczeniu bilansu dla okna nocnego, system odejmuje wartość bilansu od energii aktualnie zgromadzonej w magazynie. Najbardziej pożądaną jest wartość dodatnia czyli nadwyżka energii w magazynie w stosunku do bilansu, jeśli jednak wynikiem jest deficyt, brakująca energia magazynu musi zostać uzupełniona, zaoszczędzona, albo oba te działania muszą być wykonane łącznie. W tym celu, po wyliczeniu brakującej różnicy, system sprawdza czy deficyt energii może zostać uzupełniony (zaoszczędzona energia z magazynu)  jedynie przez przełączenie zasilania na grid, tzn. czy ilość energii potrzebnej do zasilania odbiorów w godz. 00:00 – 06:00 (koniec tańszej taryfy w nocy) jest większa lub równa niż deficyt, jeśli tak, przełącza się na zasilanie i Grid, a następnie co 2 minuty odczytuje aktualną moc pobieraną z sieci (grid_power). Jeśli moc jest większa od 0 W, dodaje do sumy delta = (moc [W] × 2/60) / 1000 kWh. Gdy skumulowana suma delta osiągnie wyliczoną różnicę (deficyt), system wyłącza zasilanie z sieci (max_grid_charge_current = 0) i przechodzi z powrotem do zasilania z magazynu. Jeżeli  jednak deficyt energii nie może zostać uzupełniony (zaoszczędzona energia z magazynu)  jedynie przez przełączenie zasilania na grid, tzn. ilość energii potrzebnej do zasilania odbiorów w godz. 00:00 – 06:00 (koniec tańszej taryfy w nocy) jest mniejsza niż deficyt, to system oprócz przełączenia zasilania na grid przechodzi też na ładowanie z grid, a następnie co 2 minuty odczytuje aktualną moc pobieraną z sieci (grid_power). Jeśli moc jest większa od 0 W, dodaje do sumy delta = (moc [W] × 2/60) / 1000 kWh. Gdy skumulowana suma delta będzie równa różnicy  wartości deficytu bilansu i ilością energii potrzebnej do zasilania odbiorów w godzinach 00:00-06:00, system wyłącza ładowanie z sieci, zeruje licznik skumulowanej sumy delta, ale w dalszym ciągu utrzymuje zasilanie z grid,  następnie z powrotem co 2 minuty odczytuje aktualną moc pobieraną z sieci (grid_power). Jeśli moc jest większa od 0 W, dodaje do sumy delta = (moc [W] × 2/60) / 1000 kWh. Gdy skumulowana suma delta osiągnie wyliczoną różnicę (deficyt), system wyłącza zasilanie z sieci(max_grid_charge_current = 0) i przechodzi z do zasilania z magazynu. Nie przewiduje się sytuacji (oprócz awarii), gdzie system nie zdąży między godziną 00:00 a 06:00 uzupełnić deficyt. Nie zależnie od powyższego, system o godz. 00:00 oblicza prognozę produkcji energii z PV dla okna ładowania  i w razie potrzeb dodatkowo doładowuje magazyn zgodnie z danymi określonymi w pliku w projekcie SZE: Dane do SZE.xlsx, 
+    VI. Dane
+Dane kluczy api i dane instalacji w pliku:  „Dane do SZE.xlsx” w projekcie SZE.
+(aktualnie podane w czacie)
+Dane falownika: https://cdn-files.myshopline.com/file/store/1675916196960/ANJ-HHP-II-6-2KP-WIFI-user-manual.pdf
+    VII. Spis poleceń do odczytu i sterowania falownikiem (MQTT SA), i innych API
+	link - github
+    VIII. Logi
+	na początek standardowo wszelkie odczyty, przełączenia, wyliczenia, później analiza i usuwanie niepotrzebnych oraz dopisywanie innych nie przewidzianych a ważnych
+
